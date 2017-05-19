@@ -4,6 +4,7 @@ export interface HomeProps {}
 
 export interface HomeState {
   rentals?: any[];
+  selectedRent?: any;
   count?: number;
   pageCount?: number;
   minRent?: number;
@@ -20,8 +21,8 @@ declare var google;
 export class Home extends Component<HomeProps, HomeState> {
 
   private mapDiv: HTMLDivElement;
-  private gMap;
   private markers: KeyValuePair<any> = {};
+  private gMap;
 
   constructor(props: HomeProps, context) {
     super(props, context);
@@ -55,6 +56,11 @@ export class Home extends Component<HomeProps, HomeState> {
     });
   }
 
+  @bind()
+  closeInfo() {
+    this.setState({ selectedRent: null });
+  }
+
   componentDidMount() {
     this.gMap = new google.maps.Map(this.mapDiv, {
       zoom: 12,
@@ -66,20 +72,36 @@ export class Home extends Component<HomeProps, HomeState> {
 
   componentDidUpdate(props: HomeProps, state: HomeState) {
     if (this.state.rentals && this.state.rentals.length && this.state.rentals != state.rentals) {
+
+      let ids = [];
       this.state.rentals.map(rent => {
+        ids.push(rent['id']);
         if (this.markers[rent['id']]) {
           this.markers[rent['id']].setMap(null);
           this.markers[rent['id']] = new google.maps.Marker({
             position: JSON.parse(rent['geoLocation']),
-            map: this.gMap
+            map: this.gMap,
+            icon: '/assets/images/marker-icon.png'
           });
         } else {
           this.markers[rent['id']] = new google.maps.Marker({
             position: JSON.parse(rent['geoLocation']),
-            map: this.gMap
+            map: this.gMap,
+            icon: '/assets/images/marker-icon.png'
           });
         }
+
+        this.markers[rent['id']].addListener('click', () => {
+          this.setState({ selectedRent: rent });
+        });
       });
+
+      for (let key of Object.keys(this.markers)) {
+        if (ids.indexOf(parseInt(key)) === -1) {
+          this.markers[key].setMap(null);
+          delete this.markers[key];
+        }
+      }
     }
   }
 
@@ -148,6 +170,12 @@ export class Home extends Component<HomeProps, HomeState> {
     }
 
     let beds = ['1', '2', '3', '4', '5+'];
+
+
+    let rentLoc;
+    if (this.state.selectedRent) {
+      rentLoc = JSON.parse(this.state.selectedRent['geoLocation']);
+    }
 
     return <div style={{ padding: '10px' }}>
       <div className="col-md-7">
@@ -256,6 +284,17 @@ export class Home extends Component<HomeProps, HomeState> {
       <div className="col-md-5">
         <div style={{ position: 'fixed', right: 0, top: '52px', width: '500px' }}>
           <div style={{ height: 'calc(100vh - 52px)' }} ref={e => this.mapDiv = e}></div>
+          {this.state.selectedRent ?
+          <div style={{ position: 'absolute', top: '10px', right: '10px', width: '95%' }}>
+            <span className="pull-right" style={{ top: '25px', position: 'relative', right: '10px', color: '#fff' }} onClick={this.closeInfo}><i className="fa fa-times"></i></span>
+            <img height="250px" src={`https://maps.googleapis.com/maps/api/streetview?location=${rentLoc['lat']},${rentLoc['lng']}&size=1280x720&fov=90&key=AIzaSyAp2FJJJNV6peSh8vHfXxb680UQZh7f33E`} width="100%" />
+            <span style={{ top:'-41px',left: '10px',position: 'relative',color: '#fff'}}>
+              {this.state.selectedRent['address']} {this.state.selectedRent['city']}<br/>
+              {this.state.selectedRent['bedCount']} bed{this.state.selectedRent['bedCount'] > 1 ? 's' : ''}, &nbsp;
+              {this.state.selectedRent['bathroomCount']} bath{this.state.selectedRent['bathroomCount'] > 1 ? 's' : ''},  &nbsp;
+            </span>
+          </div>
+          : null}
         </div>
       </div>
     </div>

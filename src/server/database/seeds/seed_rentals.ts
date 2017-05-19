@@ -19,8 +19,8 @@ export async function seed() {
 
     let rent = randomPrices[Math.floor(Math.random() * randomPrices.length)]
 
-    let lat = Math.floor(Math.random() * 5) * 10;
-    let lng = Math.floor(Math.random() * 5) * 10;
+    let lat = Math.floor(Math.random() * 10) * 25;
+    let lng = Math.floor(Math.random() * 10) * 25;
     let data = {
       name: `${1000 + x} ${curStreet} St`,
       description: "",
