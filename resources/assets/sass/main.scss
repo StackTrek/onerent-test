@@ -1,0 +1,9 @@
+$icon-font-path: '/assets/fonts/';
+$fa-font-path: '/assets/fonts';
+
+/*----- VENDORS-------
+----------------------*/
+
+// bower:scss
+@import 'public/lib/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+@import 'public/lib/font-awesome/scss/font-awesome.scss';
