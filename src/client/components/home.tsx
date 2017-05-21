@@ -144,7 +144,7 @@ export class Home extends Component<HomeProps, HomeState> {
 
   @bind()
   clearFilter() {
-    this.setState({ beds: null, minRent: null, maxRent: null, page: null }, () => this.getRentals());
+    this.setState({ beds: null, minRent: null, maxRent: null, page: null, bath: null }, () => this.getRentals());
   }
 
   @bind()
