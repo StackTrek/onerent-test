@@ -162,8 +162,7 @@ export default {
     connections: {
 
       default: {
-        client: 'pg',
-        version: '9.5.6',
+        client: 'mysql',
         connection: {
           host: env('DB_HOST', 'localhost'),
           user: env('DB_USERNAME', 'root'),

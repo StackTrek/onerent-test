@@ -25,7 +25,7 @@
     "chen": "git://github.com/chen-framework/chen.git#compiled",
     "chen-react": "^0.1.1",
     "connect-redis": "^3.0.2",
-    "pg": "^6.2.2"
+    "mysql": "^2.13.0"
   },
   "devDependencies": {
     "bower": "^1.7.9",
