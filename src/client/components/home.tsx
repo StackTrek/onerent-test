@@ -269,6 +269,27 @@ export class Home extends Component<HomeProps, HomeState> {
                     </div>
                   </div>
                 </div>
+                <div className="col-md-3">
+                  <div className="form-group">
+                    <label>Pets Allowed</label><br/>
+                    <div className="page-no">
+                      <span><button type="button" className="btn btn-xs">CATS</button></span>
+                      <span><button type="button" className="btn btn-xs">DOGS</button></span>
+
+
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-3">
+                  <div className="form-group">
+                    <label>Instant Viewing</label><br/>
+                    <div className="page-no">
+                      <input type="checkbox"/>
+
+
+                    </div>
+                  </div>
+                </div>
               </div>
               : null}
             </form>
