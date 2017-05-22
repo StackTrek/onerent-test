@@ -17,7 +17,8 @@
     "bootstrap-sass": "~3.3.5",
     "modernizr": "~2.8.1",
     "font-awesome": "fontawesome#~4.7.0",
-    "jquery": "^3.1.1"
+    "jquery": "^3.1.1",
+    "owl.carousel": "owl-carousel2#^2.2.1"
   },
   "overrides": {
     "bootstrap-sass": {

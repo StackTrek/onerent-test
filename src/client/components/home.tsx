@@ -68,6 +68,7 @@ export class Home extends Component<HomeProps, HomeState> {
     });
 
     this.getRentals();
+
   }
 
   componentDidUpdate(props: HomeProps, state: HomeState) {
@@ -188,20 +189,20 @@ export class Home extends Component<HomeProps, HomeState> {
             <ol className="breadcrumb">
               <li><a href="#">Home</a></li>
               <li><a href="#">Rentals</a></li>
-              <li className="active">San Francisco</li>
+              <li className="active"><a href="#">San Francisco</a></li>
             </ol>
-            <h1 className="text-center">San Francisco Bay Area Rental Property Listings</h1>
+            <h1>San Francisco Bay Area Rental Property Listings</h1>
           </div>
         </div>
-        <div className="filter">
-          <div className="back-to-rentals">
-            <i className="fa fa-2x fa-fw fa-map-pin"></i>
-            <h5>Bay Area</h5>
+        <div className="filter row" >
+          <div className="col-md-1 unpadded back-to-rentals">
+
+            <h5> <i className="fa fa-2x fa-fw fa-map-pin"></i> <br/>Bay Area</h5>
           </div>
-          <div className="filter-form">
+          <div className="col-md-11 filter-form">
             <form>
               <div className="row">
-                <div className="col-md-1 text-center">
+                <div className="col-md-1 filter-icon text-center">
                   <i className="fa fa-5x fa-filter"></i>
                 </div>
                 <div className="col-md-3">
@@ -225,7 +226,7 @@ export class Home extends Component<HomeProps, HomeState> {
                 <div className="col-md-3">
                   <div className="form-group">
                     <label>Beds</label><br/>
-                    <div>
+                    <div className="page-no" >
                       {beds.map(val => {
                         let cls = 'btn btn-xs';
                         if (this.state.beds == val) {
@@ -240,7 +241,7 @@ export class Home extends Component<HomeProps, HomeState> {
                     </div>
                   </div>
                 </div>
-                <div className="col-md-2">
+                <div className="col-md-2 more-items">
                   <div className="form-group button-actions">
                     {this.state.beds || this.state.bath || this.state.maxRent || this.state.minRent ?
                     <button type="button" onClick={this.clearFilter} className="btn btn-warning">Clear</button>
@@ -254,7 +255,7 @@ export class Home extends Component<HomeProps, HomeState> {
                 <div className="col-md-offset-1 col-md-2">
                   <div className="form-group">
                     <label>Baths</label><br/>
-                    <div>
+                    <div className="page-no">
                       {beds.map(val => {
                         let cls = 'btn btn-xs';
                         if (this.state.bath == val) {
@@ -273,7 +274,173 @@ export class Home extends Component<HomeProps, HomeState> {
             </form>
           </div>
         </div>
+        <div className="results-figure">
+          <div className="col-md-2 results-count">
+            <span>69 Results</span>
+          </div>
+          <div className="results-pag col-md-10 clearfix ">
+            <ul>
+             <li className="active">
+               <a href="#">1</a>
+             </li>
+             <li>
+               <a href="#">2</a>
+             </li>
+             <li>
+               <a href="#">3</a>
+             </li>
+             <li>
+               <a href="#">4</a>
+             </li>
+             <li>
+               <a href="#">5</a>
+             </li>
+          </ul>
+          </div>
+        </div>
+        <div className="row clearfix results-section">
+            <div className="result-item col-md-6">
 
+                <div className="image-carousel">
+                  <div className="like-button"></div>
+                   <div className="slide-pag">
+                      <a href="#" className="next"><i className="fa fa-chevron-right"></i></a>
+                      <a href="#" className="prev"><i className="fa fa-chevron-left"></i></a>
+
+                    </div>
+                  <div className="owl-carousel owl-theme">
+                        <div className="item">
+                          <img className="img-responsive" src="http://placehold.it/400x250"/>
+                        </div>
+                  </div>
+
+                </div>
+                <div className="item-description">
+                  <div className="soon pull-right">
+                    Coming Soon
+                  </div>
+                  <h5>
+                    266 Ney St · San Francisco
+                  </h5>
+                  <h6>
+                    2 bed, 1 bath · 1100 sqft · 650 credit
+
+                  </h6>
+                </div>
+            </div>
+             <div className="result-item col-md-6">
+
+                <div className="image-carousel">
+                  <div className="like-button"></div>
+                   <div className="slide-pag">
+                      <a href="#" className="next"><i className="fa fa-chevron-right"></i></a>
+                      <a href="#" className="prev"><i className="fa fa-chevron-left"></i></a>
+
+                    </div>
+                  <div className="owl-carousel owl-theme">
+                        <div className="item">
+                          <img className="img-responsive" src="http://placehold.it/400x250"/>
+                        </div>
+                  </div>
+
+                </div>
+                <div className="item-description">
+                  <div className="soon pull-right">
+                    Coming Soon
+                  </div>
+                  <h5>
+                    266 Ney St · San Francisco
+                  </h5>
+                  <h6>
+                    2 bed, 1 bath · 1100 sqft · 650 credit
+
+                  </h6>
+                </div>
+            </div>
+             <div className="result-item col-md-6">
+
+                <div className="image-carousel">
+                  <div className="like-button"></div>
+                   <div className="slide-pag">
+                      <a href="#" className="next"><i className="fa fa-chevron-right"></i></a>
+                      <a href="#" className="prev"><i className="fa fa-chevron-left"></i></a>
+
+                    </div>
+                  <div className="owl-carousel owl-theme">
+                        <div className="item">
+                          <img className="img-responsive" src="http://placehold.it/400x250"/>
+                        </div>
+                  </div>
+
+                </div>
+                <div className="item-description">
+                  <div className="soon pull-right">
+                    Coming Soon
+                  </div>
+                  <h5>
+                    266 Ney St · San Francisco
+                  </h5>
+                  <h6>
+                    2 bed, 1 bath · 1100 sqft · 650 credit
+
+                  </h6>
+                </div>
+            </div>
+             <div className="result-item col-md-6">
+
+                <div className="image-carousel">
+                  <div className="like-button"></div>
+                   <div className="slide-pag">
+                      <a href="#" className="next"><i className="fa fa-chevron-right"></i></a>
+                      <a href="#" className="prev"><i className="fa fa-chevron-left"></i></a>
+
+                    </div>
+                  <div className="owl-carousel owl-theme">
+                        <div className="item">
+                          <img className="img-responsive" src="http://placehold.it/400x250"/>
+                        </div>
+                  </div>
+
+                </div>
+                <div className="item-description">
+                  <div className="soon pull-right">
+                    Coming Soon
+                  </div>
+                  <h5>
+                    266 Ney St · San Francisco
+                  </h5>
+                  <h6>
+                    2 bed, 1 bath · 1100 sqft · 650 credit
+
+                  </h6>
+                </div>
+            </div>
+
+        </div>
+         <div className="results-figure fixed-bottom" >
+          <div className="col-md-2 results-count">
+            <span>69 Results</span>
+          </div>
+          <div className="results-pag col-md-10 clearfix ">
+            <ul>
+             <li className="active">
+               <a href="#">1</a>
+             </li>
+             <li>
+               <a href="#">2</a>
+             </li>
+             <li>
+               <a href="#">3</a>
+             </li>
+             <li>
+               <a href="#">4</a>
+             </li>
+             <li>
+               <a href="#">5</a>
+             </li>
+          </ul>
+          </div>
+        </div>
         {this.state.loading ?
         <div className="loading"><i className="fa fa-spin fa-spinner"></i> Loading ...</div>
         : null}
