@@ -441,7 +441,7 @@ export class Home extends Component<HomeProps, HomeState> {
           </ul>
           </div>
         </div>
-        {this.state.loading ?
+        {/*{this.state.loading ?
         <div className="loading"><i className="fa fa-spin fa-spinner"></i> Loading ...</div>
         : null}
 
@@ -470,7 +470,7 @@ export class Home extends Component<HomeProps, HomeState> {
           </div>
           {this.getPagination()}
         </div>
-        : null}
+        : null}*/}
 
       </div>
       <div className="map" data-spy="affix" data-offset-top="0">
